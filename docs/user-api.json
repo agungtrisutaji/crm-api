@@ -1,0 +1,123 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "User API",
+    "version": "1.0"
+  },
+  "servers": [{ "url": "https://localhost:8000" }],
+  "paths": {
+    "/api/users": {
+      "post": {
+        "description": "Register new User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "agung": {
+                  "description": "login user Agung",
+                  "value": {
+                    "username": "agung",
+                    "password": "password",
+                    "name": "Agung Trisutaji Aprian"
+                  }
+                }
+              },
+              "schema": {
+                "type": "object",
+                "required": ["username", "password", "name"],
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "validation error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "validationerror": {
+                    "description": "validation error",
+                    "value": {
+                      "username": [
+                        "The username field is required.",
+                        "The username must be a string."
+                      ],
+                      "name": [
+                        "The name field is required.",
+                        "The name must be a string."
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Success Register User",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Success": {
+                    "data": {
+                      "id": 1,
+                      "username": "agung",
+                      "name": "Agung Trisutaji Aprian"
+                    }
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "description": "Login User"
+      }
+    },
+    "/api/users/current": {
+      "get": {
+        "description": "Get Current User"
+      },
+      "update": {
+        "description": "Update Current User"
+      }
+    },
+    "/api/users/logout": {
+      "delet": {
+        "description": "Logout Current User"
+      }
+    }
+  }
+}
