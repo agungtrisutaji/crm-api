@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
@@ -53,7 +54,9 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function getMe(Request $request): UserResource
+    public function get(Request $request): UserResource
     {
+        $user = Auth::user();
+        return new UserResource($user);
     }
 }

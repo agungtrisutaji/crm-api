@@ -36,14 +36,14 @@ class User extends Model implements Authenticatable
         return $this->username;
     }
 
-    public function getAuthPassword()
-    {
-        return $this->password;
-    }
-
     public function getAuthPasswordName()
     {
         return 'password';
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
     }
 
     public function getRememberToken()
