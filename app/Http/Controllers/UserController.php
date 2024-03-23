@@ -52,4 +52,8 @@ class UserController extends Controller
 
         return new UserResource($user);
     }
+
+    public function getMe(Request $request): UserResource
+    {
+    }
 }
