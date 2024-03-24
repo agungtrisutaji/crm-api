@@ -22,6 +22,8 @@ Route::middleware(ApiAuthMiddleware::class)->group(function () {
     Route::delete('contacts/{id}', [ContactController::class, 'delete']);
 
     Route::post('contacts/{idContact}/addresses', [AddressController::class, 'create']);
+    Route::get('contacts/{idContact}/addresses', [AddressController::class, 'list']);
     Route::get('contacts/{idContact}/addresses/{idAddress}', [AddressController::class, 'get']);
     Route::put('contacts/{idContact}/addresses/{idAddress}', [AddressController::class, 'update']);
+    Route::delete('contacts/{idContact}/addresses/{idAddress}', [AddressController::class, 'delete']);
 });
