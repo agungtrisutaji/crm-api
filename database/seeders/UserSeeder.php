@@ -20,5 +20,11 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'token' => 'test'
         ]);
+        User::create([
+            'username' => 'admin2',
+            'name' => 'Admin2',
+            'password' => Hash::make('password2'),
+            'token' => 'test2'
+        ]);
     }
 }
